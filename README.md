@@ -26,74 +26,100 @@ To set up your Lima Charlie account, follow these steps:
 2. Fill out the registration form with your email address, password, and other required information.
 #### Installation Key Creation and Session Download
 To create an installation key and download the Lima Charlie session, follow these steps:
-1. Log in to your Lima Charlie account.
-2. Navigate to the "Sensors" tab in the sidebar navigation.
-3. From the dropdown menu, select "Installation Keys".
-4. Click the "Create New Key" button to generate a new installation key.
-5. Enter a descriptive name for your installation key and click "Create".
-6. Scroll down to the Session section on the Installation Keys page.
-7. Select the desired platform (Kali Linux) and architecture (64-bit) for your session.
-8. Click the "Download" button to obtain the session.
+
+1. Navigate to the "Sensors" tab in the sidebar navigation.
+2. From the dropdown menu, select "Installation Keys".
+3. Click the "Create New Key" button to generate a new installation key.
+4. Enter a descriptive name for your installation key and click "Create".
+5. Scroll to the Session section, select Kali Linux 64-bit, and click "Download."
 
 Alternatively, you can download the session directly from: https://downloads.limacharlie.io/sensor/linux/deb64
 
+![Table 2](./screenshots/screenshot1.png)
+![Table 2](./screenshots/screenshot2.png)
+![Table 2](./screenshots/screenshot3.png)
 
 ### Sensor Installation
 
+1. Navigate to the directory where the downloaded .deb file is located.
 ```bash
-# 1. Navigate to the directory where the downloaded .deb file is located.
 cd /path/to/your/downloads
-
-# 2. Install the LimaCharlie sensor
+```
+2. Install the LimaCharlie sensor
+```bash
 sudo dpkg -i limacharlie_4.31.1-1_amd64.deb
+```
 
-# 3. Enter your installation key
-# This key is necessary for the sensor to connect to the LimaCharlie platform.
+3. Copy the Sensor Key
 
-# 4. Successful Installation Check
+![Table 2](./screenshots/screenshot4.png)
+
+4. Enter your installation key
+
+![Table 2](./screenshots/screenshot5.png)
+
+5. Successful Installation Check
+```bash
 dpkg -l | grep limacharlie
+```
 
-# 5. Service Status
+![Table 2](./screenshots/screenshot6.png)
+
+6. Service Status
+```bash
 sudo systemctl status limacharlie
 ```
 
-# Testing Tools Setup
-## LaZagne Password Recovery Tool
+![Table 2](./screenshots/screenshot7.png)
 
-### Overview
+### Testing Tools Setup
+#### LaZagne Password Recovery Tool
+
+##### Overview
 LaZagne is a tool for recovering locally stored passwords.
 
 **IMPORTANT**: Only use this tool ethically and legally with proper authorization.
 
-### Installation Steps
-1. Install Prerequisites
+##### Installation Steps
+1. Install Prerequisites: Update package list and install requirements
 ```bash
-# Update package list and install requirements
 sudo apt update
+```
+```bash
 sudo apt install git python3
 ```
-2. Clone Repository
+
+2. Clone Repository: Get LaZagne from GitHub
+
 ```bash
-# Get LaZagne from GitHub
 git clone https://github.com/AlessandroZ/LaZagne.git
 ```
-3. Setup and Execution
-```bash
-# Navigate to LaZagne directory
-cd LaZagne
-cd Linux
 
-# Run LaZagne
+3. Setup and Execution: Navigate to LaZagne directory and run LaZagne
+```bash
+cd LaZagne
+```
+```bash
+cd Linux
+```
+```bash
 python3 laZagne.py
+```
+```bash
 python3 laZagne.py all
 ```
 ### Creating a New Detection and Response (D&R) Rule
 To create a new D&R rule in the Lima Charlie platform, follow these steps:
 
-1. **Navigate to your organization:** Go to your organization's dashboard in the Lima Charlie platform.
-2. **Access the Automation menu:** Click on the "Automation" option in the left-hand navigation menu.
-3. **Select D&R rule from the dropdown:** From the Automation menu, select "D&R rule" from the dropdown list.
-4. **Create a new rule:** On the D&R rule page, click on the "New Rule" button to start creating a new rule.
+1. **Navigate to your organization:** Click on the name of the organization within the "All Organizations" section.
+
+![Table 2](./screenshots/screenshot8.png)
+
+3. **Access the Automation menu:** Click on the "Automation" option in the left-hand navigation menu.
+4. **Select D&R rule from the dropdown:** From the Automation menu, select "D&R rule" from the dropdown list.
+5. **Create a new rule:** On the D&R rule page, click on the "New Rule" button to start creating a new rule.
+
+![Table 2](./screenshots/screenshot9.png)
 
 **Configuring the Detect Descriptor**
 
