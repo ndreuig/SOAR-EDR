@@ -195,3 +195,56 @@ In the Respond Descriptor, enter the following configuration:
     - attack.credential_access
   name: IN - HackTool - LaZAgne (SOAR-EDR)
 ```
+
+### Creating a Slack Account and Setting Up a New Workspace
+
+1. Go to the Slack website and sign up for an account.
+2. After signing in, you'll be prompted to create a new workspace. Enter a name for your workspace and click "Continue".
+3. On the next screen, you can invite teammates to join your workspace. Click "Skip for now".
+4. Once in your workspace, click on the "+" icon next to "Channels" in the left-hand menu.
+5. Enter the name "alerts" for your new channel and make sure the "Make public" option is selected.
+6. Click "Create Channel" to create the new public channel.
+7. After creating the channel, you will be prompted to add people to the channel. Click "Skip for now" to skip this step.
+
+
+
+### Tines
+
+Go to the Tines website and sign up for an account.
+
+After signing in, you'll see an example story. Click the "X" icon to close the example, and then click "End Tour" to exit the tour.
+
+Click on the "+ New" icon or the "Create a new story" button to start creating a new story.
+
+![Table 2](./screenshots/screenshot10.png)
+
+
+
+Drag the "Webhook" action to the center of the story canvas.
+![Table 2](./screenshots/tines-webhook.gif)
+
+Enter the following details for the webhook:
+Name: "Retrieves Detections"
+Description: "Retrieves LimaCharlie Detections"
+
+
+Copy the Webhook URL.
+
+Go to LimaCharlie and select your organization.
+
+Click on "Outputs" in the left navigation menu.
+
+Click on "Add Output".
+
+Select "Detections" as the output stream.
+
+In the "Choose Output Destination" section, select "Tines".
+
+Configure the output destination for Tines:
+
+Enter a name for the output.
+
+Paste the Webhook URL into the "Destination Host" field.
+
+Click "Save Output" to save the new output configuration.
+
