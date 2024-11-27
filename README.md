@@ -210,41 +210,51 @@ In the Respond Descriptor, enter the following configuration:
 
 ### Tines
 
-Go to the Tines website and sign up for an account.
+1. Go to the Tines website and sign up for an account.
 
-After signing in, you'll see an example story. Click the "X" icon to close the example, and then click "End Tour" to exit the tour.
+2. After signing in, you'll see an example story. Click the "X" icon to close the example, and then click "End Tour" to exit the tour.
 
-Click on the "+ New" icon or the "Create a new story" button to start creating a new story.
+3. Click on the "+ New" icon or the "Create a new story" button to start creating a new story.
 
 ![Table 2](./screenshots/screenshot10.png)
 
+4. Drag the "Webhook" action to the center of the story canvas.
 
-
-Drag the "Webhook" action to the center of the story canvas.
 ![Table 2](./screenshots/tines-webhook.gif)
 
-Enter the following details for the webhook:
-Name: "Retrieves Detections"
-Description: "Retrieves LimaCharlie Detections"
+5. Enter the following details for the webhook:
+  - **Name**: "Retrieves Detections"
+   
+    ![Table 2](./screenshots/screenshot11.png)
+    
+  - **Description**: "Retrieves LimaCharlie Detections"
+   
+    ![Table 2](./screenshots/screenshot12.png)
 
+6. Copy the Webhook URL.
 
-Copy the Webhook URL.
+![Table 2](./screenshots/screenshot13.png)
 
-Go to LimaCharlie and select your organization.
+7. Go to LimaCharlie and select your organization.
 
-Click on "Outputs" in the left navigation menu.
+![Table 2](./screenshots/screenshot14.png)
 
-Click on "Add Output".
+8. Click on "Outputs" in the left navigation menu.
 
-Select "Detections" as the output stream.
+![Table 2](./screenshots/screenshot15.png)
 
-In the "Choose Output Destination" section, select "Tines".
+9. Click on "Add Output".
 
-Configure the output destination for Tines:
+![Table 2](./screenshots/screenshot20.png)
 
-Enter a name for the output.
+10. Select "Detections" as the output stream.
 
-Paste the Webhook URL into the "Destination Host" field.
+![Table 2](./screenshots/screenshot16.png)
 
-Click "Save Output" to save the new output configuration.
+11. In the "Choose Output Destination" section, select "Tines".
 
+![Table 2](./screenshots/screenshot17.png)
+
+12. Configure the output destination for Tines:  Enter a name for the output, Paste the Webhook URL into the "Destination Host" field, Click "Save Output" to save the new output configuration.
+
+![Table 2](./screenshots/screenshot18.png)
