@@ -258,3 +258,6 @@ In the Respond Descriptor, enter the following configuration:
 12. Configure the output destination for Tines:  Enter a name for the output, Paste the Webhook URL into the "Destination Host" field, Click "Save Output" to save the new output configuration.
 
 ![Table 2](./screenshots/screenshot18.png)
+
+### Connecting Tines to Slack
+### Connecting Tines with Email
