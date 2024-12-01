@@ -260,15 +260,40 @@ In the Respond Descriptor, enter the following configuration:
 ![Table 2](./screenshots/screenshot18.png)
 
 ### Connecting Tines to Slack
-Scroll down on the left side navigation bar, drag the slack to the center of the canvas story, click on the slack and on the build tab search for send a message,
+Scroll down on the left side navigation bar, click on the Templates, then drag the slack to the center of the canvas story, click on the slack and on the build tab search for send a message,
 head over to slack and right click to the alerts channel, click the view channel from this window, scroll down on the about tab and copy the channel id, head back to slack and paste the channel id to the Channel / User ID on the Build tab, then click connect to slack, then it will open a window asking if you want to use slack on your own Slack app or use Tine's app for SLack and we will click use Tine's app for SLack, then we click allow on the other page that we got redirected after choosing "use Tine's app for Slack"., then you can run it to see if it sends the messages to slack (in your browser interface of Slack).
+
+1. Scroll down on the left side navigation bar and click on Templates.
+
+![Table 2](./screenshots/screenshot21.png)
+ 
+3. Drag the Slack template to the center of the canvas story.
+
+
+   
+5. Click on the Slack template and navigate to the Build tab.
+
+![Table 2](./screenshots/screenshot22.png)
+
+6. Search for "send a message" in the Build tab and click on it.
+
+![Table 2](./screenshots/screenshot23.png)
+   
+8. In Slack, right-click on the Alerts channel and select "View channel" from the dropdown menu.
+9. In the About tab, scroll down and copy the Channel ID.
+10. Go back to Tines and paste the Channel ID into the Channel / User ID field on the Build tab.
+11. On the Build tab of this slack, Click "Connect to Slack".
+12. A window will appear asking if you want to use your own Slack app or Tine's app for Slack. Select "Use Tine's app for Slack".
+13. You will be redirected to another page where you need to click "Allow".
+14. Once connected, you can run the template to test if it sends messages to Slack (in your browser interface of Slack).
+
 
 
 ### Connecting Tines with Email
 on the left side navigation bar, drag the send email to the center of the storys canvas, click on the send email, and on the right side, on the Build tab, set a descrittion
 as Send email, in the Recipients there are Specify the email address or list of email addresses to send to. and Reply to you can add any email is Specify the email address that should be used as the Reply-To address of the email., on the SEnder name set it as Alerts and Subject as Test for now.
 
-
+###note Click in the background of the canvas story to return to the main view. This will allow you to see the left side panel, which includes details such as Status, Story name, Description, Story owner, Tags, and Credentials, and then under Credentials section
 ### Isolate Computer Prompt
 to create a user prompt, we will use a page, place your mouse to Tools, then it will appear on the side 3 options, we will drag page to the centecr of the story canvas. at the right side in the Build tab, we set the name as User prompt, in the description set it as Isolate Computer (Yes/No), the Access Control choose Members of this Tines tenant, Page behavour choose Show success message, Success message set it as Thank you, you can now close this window..., and then link tines with User prompt, then click edit page, Then we enter in the heading content IN-SOAR-EDR-Project, then click below this to edit the text and enter Do you want to isolate the machine? (actually here will be our interesting field with our info), then on the left side navigation search for Input fileds section and then drag the boolean button to the the box, then we change the name boolean to Isolate? (and here the isolate should be "Do you want to isolate the machine?, thats it for now.
 
