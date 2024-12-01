@@ -271,21 +271,35 @@ head over to slack and right click to the alerts channel, click the view channel
 
 
    
-5. Click on the Slack template and navigate to the Build tab.
+5. Click on the Slack, navigate to the Build tab and search for "send a message".
 
 ![Table 2](./screenshots/screenshot22.png)
 
-6. Search for "send a message" in the Build tab and click on it.
+6. The click on Send a message.
 
 ![Table 2](./screenshots/screenshot23.png)
    
 8. In Slack, right-click on the Alerts channel and select "View channel" from the dropdown menu.
-9. In the About tab, scroll down and copy the Channel ID.
-10. Go back to Tines and paste the Channel ID into the Channel / User ID field on the Build tab.
-11. On the Build tab of this slack, Click "Connect to Slack".
-12. A window will appear asking if you want to use your own Slack app or Tine's app for Slack. Select "Use Tine's app for Slack".
-13. You will be redirected to another page where you need to click "Allow".
-14. Once connected, you can run the template to test if it sends messages to Slack (in your browser interface of Slack).
+
+![Table 2](./screenshots/screenshot24.png)
+
+10. In the About tab, scroll down and copy the Channel ID.
+
+![Table 2](./screenshots/screenshot25.png)
+
+12. Go back to Tines and paste the Channel ID into the Channel / User ID field on the Build tab.
+
+![Table 2](./screenshots/screenshot26.png)
+
+14. On the Build tab of this slack, Click "Connect to Slack".
+
+![Table 2](./screenshots/screenshot27.png)
+
+15. A window will appear asking if you want to use your own Slack app or Tine's app for Slack. Select "Use Tine's app for Slack".
+16. You will be redirected to another page where you need to click "Allow".
+
+17. Once connected, you can run the template to test if it sends messages to Slack (in your browser interface of Slack).
+![Table 2](./screenshots/screenshot28.png)
 
 
 
@@ -293,17 +307,137 @@ head over to slack and right click to the alerts channel, click the view channel
 on the left side navigation bar, drag the send email to the center of the storys canvas, click on the send email, and on the right side, on the Build tab, set a descrittion
 as Send email, in the Recipients there are Specify the email address or list of email addresses to send to. and Reply to you can add any email is Specify the email address that should be used as the Reply-To address of the email., on the SEnder name set it as Alerts and Subject as Test for now.
 
+Here are the steps to set up the "Send Email" action:
+
+1. On the left side navigation bar, drag the "Send Email" to the center of the story's canvas.
+
+
+
+3. Click on the "Send Email" action.
+
+![Table 2](./screenshots/screenshot29.png)
+
+4. On the right side, on the Build tab, set the following:
+   - Description: Send email
+  
+     ![Table 2](./screenshots/screenshot30.png)
+        
+   - Recipients: Specify the email address or list of email addresses to send to.
+   
+     ![Table 2](./screenshots/screenshot31.png)
+   
+   - Reply to: Specify the email address that should be used as the Reply-To address of the email.
+   
+     ![Table 2](./screenshots/screenshot32.png)    
+   
+   - Sender name: Alerts
+  
+     ![Table 2](./screenshots/screenshot33.png)
+
+   - Subject: Test (for now)
+  
+     ![Table 2](./screenshots/screenshot34.png)
+
+
+
 ###note Click in the background of the canvas story to return to the main view. This will allow you to see the left side panel, which includes details such as Status, Story name, Description, Story owner, Tags, and Credentials, and then under Credentials section
+
+
 ### Isolate Computer Prompt
 to create a user prompt, we will use a page, place your mouse to Tools, then it will appear on the side 3 options, we will drag page to the centecr of the story canvas. at the right side in the Build tab, we set the name as User prompt, in the description set it as Isolate Computer (Yes/No), the Access Control choose Members of this Tines tenant, Page behavour choose Show success message, Success message set it as Thank you, you can now close this window..., and then link tines with User prompt, then click edit page, Then we enter in the heading content IN-SOAR-EDR-Project, then click below this to edit the text and enter Do you want to isolate the machine? (actually here will be our interesting field with our info), then on the left side navigation search for Input fileds section and then drag the boolean button to the the box, then we change the name boolean to Isolate? (and here the isolate should be "Do you want to isolate the machine?, thats it for now.
 
+
+1. Place your mouse on Tools, and then drag the "Page" option to the center of the story canvas.
+2. On the right side, in the Build tab, set the following: 
+   - Name: User prompt
+  
+     ![Table 2](./screenshots/screenshot35.png)
+
+   - Description: Isolate Computer (Yes/No)
+  
+     ![Table 2](./screenshots/screenshot36.png)
+
+   - Access Control: Members of this Tines tenant
+  
+     ![Table 2](./screenshots/screenshot37.png)
+
+   - Page behaviour: Show success message
+  
+     ![Table 2](./screenshots/screenshot38.png)
+
+   - Success message: Thank you, you can now close this window...
+  
+     ![Table 2](./screenshots/screenshot39.png)
+
+3. Click "Edit page" (leave the example in the page as it is).
+
+   ![Table 2](./screenshots/screenshot40.png)
+   
+5. Click on the heading content where it says "My new page", enter: IN-SOAR-EDR-Project
+
+   ![Table 2](./screenshots/screenshot41.png)
+
+6. Below the heading, edit the text and enter the detail message(we will add it later)
+
+   ![Table 2](./screenshots/screenshot42.png)
+
+7. On the left side navigation, on the Elements tab, look  for the "Input fields" section and then drag the "Boolean" to the box.
+
+   
+
+8. Change the name "Boolean" to "Do you want to isolate the machine?"
+
+   ![Table 2](./screenshots/screenshot43.png)
+
+
+
 ### include the details into our messages
-so click to the webhook and then click to events, if you dont have an event yet, head back to your virtual machine and execute again LaZagne in your terminal (assuming you have connected Tines with limaCHarlie), then we go back to the webhook, then event, we select an event, then in the center there will be the info, then we expand the "retrieve_detection", then expand "body", then expand "event" and "routing". copy "cat", "link", in "event" copy "COMMAND_LINE" and "FILE_PATH", and then in "routing" copy 
+so click to the webhook and then click to events, if you dont have an event yet, head back to your virtual machine and execute again LaZagne in your terminal (assuming you have connected Tines with limaCHarlie), then we go back to the webhook, then event, we select an event, then in the center there will be the info, then we expand the "retrieve_detection", then expand "body", then expand detect, then expand "event" and "routing". copy "cat", "link", in "event" copy "COMMAND_LINE". "USER_NAME" and "FILE_PATH", and then in "routing" copy 
 "hostname", "event_time", "int_ip", "sid". we could do this differently, we could click to Slack in our Story in Tines, then on the right side on the Build tab, on the Message field we click the plus button, then value, here we are interested in Data section, (the reson we see the Data section is because there is a link between webhook and Slack), so lets clikc on retrieve_detections on the Data section, click again and it will add a dot and then in Data section it will show "body", "headers", "response". we want to select body, so we clikc on body, then click again, then you can see all the data of the body, then we can click on the cat (but dont click cat again, it will add a dot and cause an error), this will show our title. to save just click out of this window. but we will paste in all of our information that we copied into our notepad. we will make it little more user friendly by adding some infor, Tittle:, Time:, Computer:, Source IP:, Username:, FIle Path:, Command Line:, Sensor ID:, Detection Link:. do the same thing for the email, but the only difference is we will but each of then inside a <br> to create line break bcs it is an html for email. we do the same we paste that into our contents section under title in our User Prompt page.
+
+
+Tittle: <<retrieve_detections.body.cat>> 
+Time: <<retrieve_detections.body.detect.routing.event_time>> 
+Computer: <<retrieve_detections.body.detect.routing.hostname>> 
+Source IP: <<retrieve_detections.body.detect.routing.int_ip>> 
+Username: <<retrieve_detections.body.detect.event.USER_NAME>>
+FIle Path: <<retrieve_detections.body.detect.event.FILE_PATH>> 
+Command Line: <<retrieve_detections.body.detect.event.COMMAND_LINE>> 
+Sensor ID: <<retrieve_detections.body.detect.routing.sid>> 
+Detection Link: <<retrieve_detections.body.link>>
+
+
 
 
 ### Handling User Response (No)
 on the left side, drag the trigger in the middle of the canvas story below user prompt. on the right side on the Build tab set the Name as no, then at Rules click the plus, then click on value then in this window we click user_prompt at the Data section, click again, then click body, click again to body and then click isolate once (make sure it has not dot after isolate). then below leave it as "is equal to" and then the field below this set it as false. now we copy the slack we have in our story canvas and paste it below our No trigger, and then click on it and in the right side on the build tab we will edit the message, where we delete the current data there, and enter "The computer: {}retrieve_detections.body.routing.hostname was not isolated, please investigate." then connect No trigger to this slack. to test it, click on the user prompt, then click on the arrow (wehere it says visit page if you hover the mouse there) besides the event, then below you might see recent events (now if you dont have any events or you have submitted them before, you can generate a new event by clicking into the webhook above, then events, then select on a previus event and then click re-emit, this just run the again the same detection),then select one event or the recent one, then you will be redirected to the user prompt page, then we select No and submit, then go back to slack, to alerts channel and see if you got the message "The computer: {}retrieve_detections.body.routing.hostname was not isolated, please investigate.
+
+
+1. On the left side, drag the trigger in the middle of the canvas story below the User Prompt.
+2. On the right side, in the Build tab, set the following: 
+   - Name: No
+3. Click on the User Prompt above, click the arrow that is pointing in the top right and where you hover your mouse it says visit page.
+4. Click on one unsubmitted event.
+5. The page will open, and there you click No and Submit.
+3. At Rules, click inside the box, then click the plus, then click on Value, and in the opened window:
+   - Click user_prompt at the Data section and click again
+   - Click body and click again to body
+   - Click do_you_want_to_isolate_the_machine (make sure it has no dot after do_you_want_to_isolate_the_machine)
+   - The full rules path should be: user_prompt.body.do_you_want_to_isolate_the_machine
+4. Below, leave it as "is equal to" and set the field below this to False.
+5. Copy the Slack action you have in your story canvas and paste it below the No trigger.
+6. Click on the Slack action and in the right side, in the Build tab, edit the message:
+   - Delete the current data
+   - Enter: The computer: <<retrieve_detections.body.detect.routing.hostname>> was not isolated, please investigate.
+7. Connect the No trigger to this Slack action.
+
+8. To test it:
+   - Click into the Webhook and select the "Events" tab.
+   - Choose a previous event from the list and click the "Re-emit" button. If no previous events exist, rerun LaZagne instead.
+   - Click on the "User Prompt" and then click the arrow next to the event (where it says "Visit page" on hover).
+   - Select the "Recent Event" option from the dropdown menu.
+   - You will be redirected to the User Prompt page. Select "No" and submit the form.
+   - Go back to Slack and navigate to the Alerts channel. Verify if you received the message The computer: <<retrieve_detections.body.detect.routing.hostname>> was not isolated, please investigate.
 
 ### Handling User Response (Yes)
 we will add another trigger, so copy the No trigger and paste it to the side. change the Name field to Yes on the right side in the Build tab and in the Rules change the false to true. then on the left side of the page click on the Templates, then search LimaCharlie in the search box, then drag to the center of the canvas story below the Yes trigger (LimaCharlie know which machine to isolate because of the Sensor ID). now click on this LimaCharlie, in the right side on the Build tab in the search box search isolate sensor, then select isolate sensor. then after we select this, we will have name and description to Isolate Sensor, then we will change the URL https://api.limacharlie.io/v1/{}sid/isolation to https://api.limacharlie.io/v1/{}retrieve_detections.body.detect.routing.sid/isolation, then connect Yes trigger to Isolate sensor. now we need to connect this (HTTP Request: Isolate Sensor) using a credential. now go back to your dashboard in Tines clicking the top left corner Tines icon, then you will see your stories, then click Your drafts on the side of the Tines icon that is in the top left corner, then click + new button, and then on the dropdown options select text. go back to limacharlie organzation, then scroll down and then click access managment, then click Rest API, then copy Org JWT, go back to Tines where we selected text, type limacharlie for name field, type LimaCharlie API for description field, then paste the Org JWT that we copied from LimaCharlie in the Value field, then in Domains field type *.limacharlie.io (this ensures that the credentials can only be used towards this site), then click save. now back to our story (click on nothing) and on the right side where is the Status, on the credentials sections click connect and then select our credentials that we created
