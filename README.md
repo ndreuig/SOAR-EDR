@@ -505,7 +505,7 @@ we will add another trigger, so copy the No trigger and paste it to the side. ch
 
    - Change the "Name" field to "Yes" in the Build tab and 
    
-     ![Table 2](./screenshots/screenshot62.png)
+     ![Table 2](./screenshots/screenshot66.png)
    
    - update the rule to "true".
 
@@ -521,7 +521,7 @@ we will add another trigger, so copy the No trigger and paste it to the side. ch
 
 5. Drag it to the center of the canvas below the "Yes" trigger.
 
-   ![Table 2](./screenshots/screenshot66.png)
+   
 
 6. Click on the LimaCharlie template, and in the Build tab, search for "isolate sensor" in the search box.
 
