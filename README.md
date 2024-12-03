@@ -414,30 +414,86 @@ on the left side, drag the trigger in the middle of the canvas story below user 
 
 
 1. On the left side, drag the trigger in the middle of the canvas story below the User Prompt.
-2. On the right side, in the Build tab, set the following: 
+2. On the right side, in the Build tab, set the following:
    - Name: No
-3. Click on the User Prompt above, click the arrow that is pointing in the top right and where you hover your mouse it says visit page.
-4. Click on one unsubmitted event.
-5. The page will open, and there you click No and Submit.
-3. At Rules, click inside the box, then click the plus, then click on Value, and in the opened window:
-   - Click user_prompt at the Data section and click again
-   - Click body and click again to body
-   - Click do_you_want_to_isolate_the_machine (make sure it has no dot after do_you_want_to_isolate_the_machine)
-   - The full rules path should be: user_prompt.body.do_you_want_to_isolate_the_machine
-4. Below, leave it as "is equal to" and set the field below this to False.
-5. Copy the Slack action you have in your story canvas and paste it below the No trigger.
-6. Click on the Slack action and in the right side, in the Build tab, edit the message:
-   - Delete the current data
-   - Enter: The computer: <<retrieve_detections.body.detect.routing.hostname>> was not isolated, please investigate.
-7. Connect the No trigger to this Slack action.
+  
+     ![Table 2](./screenshots/screenshot44.png)
 
-8. To test it:
+3. Click on the User Prompt above, click the arrow that is pointing in the top right and where you hover your mouse it says visit page.
+
+   ![Table 2](./screenshots/screenshot45.png)
+
+4. Click on one unsubmitted event.
+
+   ![Table 2](./screenshots/screenshot46.png)
+
+5. The page will open, and there you click No and Submit.
+
+   ![Table 2](./screenshots/screenshot47.png)
+
+3. At Rules, click inside the box, then click the plus, then click on Value, and in the opened window:
+
+   ![Table 2](./screenshots/screenshot48.png)
+   
+   - Click user_prompt at the Data section and click again
+  
+     ![Table 2](./screenshots/screenshot49.png)
+
+   - Click body and click again to body
+  
+     ![Table 2](./screenshots/screenshot50.png)
+
+   - Click do_you_want_to_isolate_the_machine (make sure it has no dot after do_you_want_to_isolate_the_machine)
+  
+     ![Table 2](./screenshots/screenshot51.png)
+
+   - The full rules path should be:
+   
+   ```bash
+     <<user_prompt.body.do_you_want_to_isolate_the_machine>>
+   ```
+     
+5. Below, leave it as "is equal to" and set the field below this to False.
+
+   ![Table 2](./screenshots/screenshot52.png)
+
+6. Copy the Slack action you have in your story canvas and paste it below the No trigger.
+
+   ![Table 2](./screenshots/screenshot53.png)
+   
+8. Click on the Slack action and in the right side, in the Build tab, edit the message:
+   - Delete the current data
+
+   - Enter: The computer: <<retrieve_detections.body.detect.routing.hostname>> was not isolated, please investigate.
+  
+     ![Table 2](./screenshots/screenshot54.png)
+
+9. Connect the No trigger to this Slack action.
+
+10. To test it:
    - Click into the Webhook and select the "Events" tab.
+  
+     ![Table 2](./screenshots/screenshot55.png)
+
    - Choose a previous event from the list and click the "Re-emit" button. If no previous events exist, rerun LaZagne instead.
+  
+     ![Table 2](./screenshots/screenshot56.png)
+
    - Click on the "User Prompt" and then click the arrow next to the event (where it says "Visit page" on hover).
+  
+     ![Table 2](./screenshots/screenshot57.png)
+
    - Select the "Recent Event" option from the dropdown menu.
+  
+     ![Table 2](./screenshots/screenshot58.png)
+
    - You will be redirected to the User Prompt page. Select "No" and submit the form.
+  
+     ![Table 2](./screenshots/screenshot59.png)
+
    - Go back to Slack and navigate to the Alerts channel. Verify if you received the message The computer: <<retrieve_detections.body.detect.routing.hostname>> was not isolated, please investigate.
+
+     ![Table 2](./screenshots/screenshot60.png)
 
 ### Handling User Response (Yes)
 we will add another trigger, so copy the No trigger and paste it to the side. change the Name field to Yes on the right side in the Build tab and in the Rules change the false to true. then on the left side of the page click on the Templates, then search LimaCharlie in the search box, then drag to the center of the canvas story below the Yes trigger (LimaCharlie know which machine to isolate because of the Sensor ID). now click on this LimaCharlie, in the right side on the Build tab in the search box search isolate sensor, then select isolate sensor. then after we select this, we will have name and description to Isolate Sensor, then we will change the URL https://api.limacharlie.io/v1/{}sid/isolation to https://api.limacharlie.io/v1/{}retrieve_detections.body.detect.routing.sid/isolation, then connect Yes trigger to Isolate sensor. now we need to connect this (HTTP Request: Isolate Sensor) using a credential. now go back to your dashboard in Tines clicking the top left corner Tines icon, then you will see your stories, then click Your drafts on the side of the Tines icon that is in the top left corner, then click + new button, and then on the dropdown options select text. go back to limacharlie organzation, then scroll down and then click access managment, then click Rest API, then copy Org JWT, go back to Tines where we selected text, type limacharlie for name field, type LimaCharlie API for description field, then paste the Org JWT that we copied from LimaCharlie in the Value field, then in Domains field type *.limacharlie.io (this ensures that the credentials can only be used towards this site), then click save. now back to our story (click on nothing) and on the right side where is the Status, on the credentials sections click connect and then select our credentials that we created
