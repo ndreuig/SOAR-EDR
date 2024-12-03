@@ -604,3 +604,46 @@ we will add another trigger, so copy the No trigger and paste it to the side. ch
 now on the left side click Templates, search LimaCharlie, drag Limacharlie template to the center of canvas story below Isolate sensor, click on it and in the right side on the Build tab we search get isolation status on the search box, then select get isolation status, change the URL to https://api.limacharlie.io/v1/{}retrieve_detections.body.detect.routing.sid/isolation, then in the headers section here we need to change the Bearer, and to change this we click on nothing in the middle of the story canvas, then on the right side it will show the Credentials and then click connect on LimaCharlie and then select limacharlie that we created, then we copy a slack and paste below this Get Isolation Status, and then we update the message to 
 Isolation Status: {}get_isolation_status.body.is_isolated
 The computer: {}retrieve_detections.body.detect.routing.hostname has been isolated.
+
+
+1. On the left side, click on "Templates".
+
+   ![Table 2](./screenshots/screenshot64.png)
+
+    
+3. Search for "LimaCharlie" in the search box.
+
+   ![Table 2](./screenshots/screenshot65.png)
+   
+5. Drag the LimaCharlie template to the center of the canvas story below the "Isolate Sensor" action.
+
+
+
+6. Click on the LimaCharlie template, and in the right side on the Build tab, search for "get isolation status" in the search box.
+
+   ![Table 2](./screenshots/screenshot85.png)
+
+7. Select "get isolation status".
+
+   ![Table 2](./screenshots/screenshot86.png)
+
+8. Change the URL to https://api.limacharlie.io/v1/<<retrieve_detections.body.detect.routing.sid>>/isolation
+
+
+9. Then, in the headers section, we need to Change the Bearer. To do this, click on nothing in the middle of the story canvas, then on the right side it will show the Credentials section, and click "Connect" on LimaCharlie.
+   
+   ![Table 2](./screenshots/screenshot87.png)
+
+13. Then, select the "limacharlie" credential that we created.
+
+    ![Table 2](./screenshots/screenshot88.png)
+
+14. Copy a Slack template and paste it below the "Get Isolation Status" action.
+
+    ![Table 2](./screenshots/screenshot89.png)
+
+15. Update the message to:
+```bash
+Isolation Status: <<get_isolation_status.body.is_isolated>>
+The computer: <<retrieve_detections.body.detect.routing.hostname has been isolated>>
+```
