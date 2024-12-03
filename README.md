@@ -498,6 +498,108 @@ on the left side, drag the trigger in the middle of the canvas story below user 
 ### Handling User Response (Yes)
 we will add another trigger, so copy the No trigger and paste it to the side. change the Name field to Yes on the right side in the Build tab and in the Rules change the false to true. then on the left side of the page click on the Templates, then search LimaCharlie in the search box, then drag to the center of the canvas story below the Yes trigger (LimaCharlie know which machine to isolate because of the Sensor ID). now click on this LimaCharlie, in the right side on the Build tab in the search box search isolate sensor, then select isolate sensor. then after we select this, we will have name and description to Isolate Sensor, then we will change the URL https://api.limacharlie.io/v1/{}sid/isolation to https://api.limacharlie.io/v1/{}retrieve_detections.body.detect.routing.sid/isolation, then connect Yes trigger to Isolate sensor. now we need to connect this (HTTP Request: Isolate Sensor) using a credential. now go back to your dashboard in Tines clicking the top left corner Tines icon, then you will see your stories, then click Your drafts on the side of the Tines icon that is in the top left corner, then click + new button, and then on the dropdown options select text. go back to limacharlie organzation, then scroll down and then click access managment, then click Rest API, then copy Org JWT, go back to Tines where we selected text, type limacharlie for name field, type LimaCharlie API for description field, then paste the Org JWT that we copied from LimaCharlie in the Value field, then in Domains field type *.limacharlie.io (this ensures that the credentials can only be used towards this site), then click save. now back to our story (click on nothing) and on the right side where is the Status, on the credentials sections click connect and then select our credentials that we created
 
+
+1. Duplicate the "No" trigger by copying and pasting it to the side.
+
+   ![Table 2](./screenshots/screenshot61.png)
+
+   - Change the "Name" field to "Yes" in the Build tab and 
+   
+     ![Table 2](./screenshots/screenshot62.png)
+   
+   - update the rule to "true".
+
+     ![Table 2](./screenshots/screenshot63.png)
+
+3. On the left side of the page, click on "Templates".
+
+   ![Table 2](./screenshots/screenshot64.png)
+
+4. Search for "LimaCharlie" in the search box.
+
+   ![Table 2](./screenshots/screenshot65.png)
+
+5. Drag it to the center of the canvas below the "Yes" trigger.
+
+   ![Table 2](./screenshots/screenshot66.png)
+
+6. Click on the LimaCharlie template, and in the Build tab, search for "isolate sensor" in the search box.
+
+   ![Table 2](./screenshots/screenshot67.png)
+
+   - Select "isolate sensor" and
+
+     ![Table 2](./screenshots/screenshot68.png)
+
+   - update the URL to `https://api.limacharlie.io/v1/<<retrieve_detections.body.detect.routing.sid>>/isolation`.
+  
+     ![Table 2](./screenshots/screenshot69.png)
+
+7. Connect the "Yes" trigger to the "Isolate Sensor" action.
+   
+9. To connect the "HTTP Request: Isolate Sensor" using a credential, go back to the Tines dashboard by clicking the top left corner Tines icon.
+
+   ![Table 2](./screenshots/screenshot70.png)
+
+10. Click on "Your drafts" on the side of the Tines icon.
+
+    ![Table 2](./screenshots/screenshot71.png)
+
+11. Then click on "Credentials".
+
+    ![Table 2](./screenshots/screenshot72.png)
+
+12. Click the "+ new" button.
+
+    ![Table 2](./screenshots/screenshot73.png)
+
+13. Select "text" from the dropdown options.
+
+    ![Table 2](./screenshots/screenshot74.png)
+
+    - Type "limacharlie" in the "Name" field.
+   
+      ![Table 2](./screenshots/screenshot75.png)
+
+    - Type "LimaCharlie API" in the "Description" field.
+   
+      ![Table 2](./screenshots/screenshot76.png)
+
+    - Type "*.limacharlie.io" in the "Domains" field to restrict the credential to only this site.
+   
+      ![Table 2](./screenshots/screenshot77.png)
+
+16. Go back to the LimaCharlie organization, scroll down, and click on "Access Management".
+
+    ![Table 2](./screenshots/screenshot78.png)
+
+    - Then, click on "Rest API" and
+   
+      ![Table 2](./screenshots/screenshot79.png)
+
+    - copy the Org JWT.
+   
+      ![Table 2](./screenshots/screenshot80.png)
+
+17. Go back to Tines, and paste the Org JWT in the "Value" field.
+
+    ![Table 2](./screenshots/screenshot81.png)
+
+18. Click "Save" to save the credential.
+
+    ![Table 2](./screenshots/screenshot82.png)
+
+19. Go back to the story by clicking on the icon the top left corner Tines icon and then choose your story, click on nothing in the middle of the story canvas, then on the right side it will show the Credentials section.
+
+    - Click "Connect" in the credentials section.
+
+      ![Table 2](./screenshots/screenshot83.png)
+
+    - Select the newly created credential to connect it to the "Isolate Sensor" action.
+   
+      ![Table 2](./screenshots/screenshot84.png)
+
+
 ### isolation status and message
 now on the left side click Templates, search LimaCharlie, drag Limacharlie template to the center of canvas story below Isolate sensor, click on it and in the right side on the Build tab we search get isolation status on the search box, then select get isolation status, change the URL to https://api.limacharlie.io/v1/{}retrieve_detections.body.detect.routing.sid/isolation, then in the headers section here we need to change the Bearer, and to change this we click on nothing in the middle of the story canvas, then on the right side it will show the Credentials and then click connect on LimaCharlie and then select limacharlie that we created, then we copy a slack and paste below this Get Isolation Status, and then we update the message to 
 Isolation Status: {}get_isolation_status.body.is_isolated
