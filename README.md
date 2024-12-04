@@ -1,11 +1,36 @@
-# SOAR-EDR
-## Installation Documentation
+# SOAR-EDR Project Overview
 
-### Prerequisites
-- Kali Linux VM
-- Internet connectivity
-- Lima Charlie account
-- Installation Key from Lima Charlie dashboard
+## Table of Contents
+1. Introduction and Foundations
+   - Presenting EDR
+   - Presenting SOAR
+   - Project Overview
+   - Workflow
+   - Environment
+2. Preparatory Setup
+   - Prerequisites
+   - System Verification
+3. Threat Simulation Tool
+   - LaZagne Password Recovery Tool
+4. LimaCharlie Configuration
+   - Account Setup
+   - Installation Key Creation and Session Download
+   - Sensor Installation
+   - Creating a New Detection and Response (D&R) Rule
+5. Communication Platform Configuration
+   - Creating a Slack Account and Setting Up a New Workspace
+   - Tines Configuration
+   - Connecting to LimaCharlie
+   - Connecting to Slack
+   - Connecting to Email
+   - - Incident Message Details Template
+6. Incident Response Framework
+   - Incident Response Workflow
+   - Isolate Computer Prompt
+   - Handling User Responses (No)
+   - Handling User Responses (Yes)
+   - Isolation Status and Messaging
+
 
 ### System Verification
 Before installation, verify your system specifications:
@@ -19,60 +44,7 @@ curl -v https://limacharlie.io
 telnet limacharlie.io 443
 ```
 
-### LimaCharlie
-#### Account Setup
-To set up your Lima Charlie account, follow these steps:
-1. Go to the Lima Charlie website and sign up for an account.
-2. Fill out the registration form with your email address, password, and other required information.
-#### Installation Key Creation and Session Download
-To create an installation key and download the Lima Charlie session, follow these steps:
-
-1. Navigate to the "Sensors" tab in the sidebar navigation.
-2. From the dropdown menu, select "Installation Keys".
-3. Click the "Create New Key" button to generate a new installation key.
-4. Enter a descriptive name for your installation key and click "Create".
-5. Scroll to the Session section, select Kali Linux 64-bit, and click "Download."
-
-Alternatively, you can download the session directly from: https://downloads.limacharlie.io/sensor/linux/deb64
-
-![Table 2](./screenshots/screenshot1.png)
-![Table 2](./screenshots/screenshot2.png)
-![Table 2](./screenshots/screenshot3.png)
-
-### Sensor Installation
-
-1. Navigate to the directory where the downloaded .deb file is located.
-```bash
-cd /path/to/your/downloads
-```
-2. Install the LimaCharlie sensor
-```bash
-sudo dpkg -i limacharlie_4.31.1-1_amd64.deb
-```
-
-3. Copy the Sensor Key
-
-![Table 2](./screenshots/screenshot4.png)
-
-4. Enter your installation key
-
-![Table 2](./screenshots/screenshot5.png)
-
-5. Successful Installation Check
-```bash
-dpkg -l | grep limacharlie
-```
-
-![Table 2](./screenshots/screenshot6.png)
-
-6. Service Status
-```bash
-sudo systemctl status limacharlie
-```
-
-![Table 2](./screenshots/screenshot7.png)
-
-### Testing Tools Setup
+### Threat Simulation Tool
 #### LaZagne Password Recovery Tool
 
 ##### Overview
@@ -108,6 +80,66 @@ python3 laZagne.py
 ```bash
 python3 laZagne.py all
 ```
+
+
+
+### LimaCharlie Configuration
+
+**Overview**
+LimaCharlie is a cloud-native Endpoint Detection and Response (EDR) platform that provides real-time threat detection, incident response, and security monitoring capabilities. Designed for scalability and ease of use, LimaCharlie helps organizations of all sizes to detect and respond to advanced threats, while also providing a robust framework for security teams to investigate and remediate incidents.
+
+#### Account Setup
+To set up your Lima Charlie account, follow these steps:
+1. Go to the Lima Charlie website and sign up for an account.
+2. Fill out the registration form with your email address, password, and other required information.
+
+#### Installation Key Creation and Session Download
+To create an installation key and download the Lima Charlie session, follow these steps:
+
+1. Navigate to the "Sensors" tab in the sidebar navigation.
+2. From the dropdown menu, select "Installation Keys".
+3. Click the "Create New Key" button to generate a new installation key.
+4. Enter a descriptive name for your installation key and click "Create".
+5. Scroll to the Session section, select Kali Linux 64-bit, and click "Download."
+
+Alternatively, you can download the session directly from: https://downloads.limacharlie.io/sensor/linux/deb64
+
+![Table 2](./screenshots/screenshot1.png)
+![Table 2](./screenshots/screenshot2.png)
+![Table 2](./screenshots/screenshot3.png)
+
+### Sensor Installation
+1. Navigate to the directory where the downloaded .deb file is located.
+```bash
+cd /path/to/your/downloads
+```
+2. Install the LimaCharlie sensor
+```bash
+sudo dpkg -i limacharlie_4.31.1-1_amd64.deb
+```
+
+3. Copy the Sensor Key
+
+![Table 2](./screenshots/screenshot4.png)
+
+4. Enter your installation key
+
+![Table 2](./screenshots/screenshot5.png)
+
+5. Successful Installation Check
+```bash
+dpkg -l | grep limacharlie
+```
+
+![Table 2](./screenshots/screenshot6.png)
+
+6. Service Status
+```bash
+sudo systemctl status limacharlie
+```
+
+![Table 2](./screenshots/screenshot7.png)
+
 ### Creating a New Detection and Response (D&R) Rule
 To create a new D&R rule in the Lima Charlie platform, follow these steps:
 
@@ -149,7 +181,8 @@ rules:
         path: event/HASH
         value: "bbe76b860d1abdb0e1146cb2be037ba63cbf430d87af42e89de33bd46222764b"
 ```
-In plain english: The even must be a (NEW_PROCESS AND must be a linux) AND file_path ends with python3.12 OR command_line ends with all OR command_line contains lazagne
+**In plain english** 
+The even must be a (NEW_PROCESS AND must be a linux) AND file_path ends with python3.12 OR command_line ends with all OR command_line contains lazagne
 OR hash == Lazagne hash.
 
 **Configuration Explanation**
