@@ -30,6 +30,60 @@
    - Handling User Responses (Yes)
      - Isolation Status and Messaging
 
+
+
+## Introduction
+
+### What is edr?
+EDR (Endpoint Detection and Response) is a cybersecurity technology that detects, investigates, and responds to advanced threats on endpoint devices like laptops, desktops, and servers. It provides real-time monitoring, threat detection, and incident response capabilities to help protect against cyber attacks.
+
+### What is SOAR?
+SOAR (Security Orchestration, Automation, and Response) is a cybersecurity technology that automates and streamlines security incident response processes. It integrates with various security tools to provide a centralized platform for threat detection, incident response, and remediation, helping to improve efficiency and reduce response times.
+
+### Project Overview
+…..
+### Workflow
+
+### Project Environment
+
+A hands-on cybersecurity automation project utilizing Kali Linux as the primary operating system, VirtualBox for virtualization, LimaCharlie as the endpoint detection and response (EDR) platform, Tines for security orchestration, Slack for communication, and LaZagne as a simulated password recovery tool to demonstrate and test a comprehensive security detection and response workflow.
+
+**Kali Linux**
+   - Primary operating system for the project
+   - Renowned cybersecurity and penetration testing distribution
+   - Provides robust tools and environment for security research and implementation
+   - Used as the main control and development platform
+
+**VirtualBox**
+   - Virtualization software enabling multiple operating system instances
+   - Allows creation and management of virtual machines
+   - Provides isolated and controlled testing environment
+   - Enables safe deployment of test systems without affecting primary hardware
+
+**LimaCharlie**
+   - Cloud-based endpoint detection and response (EDR) platform
+   - Provides real-time monitoring and detection capabilities
+   - Enables custom rule creation and automated response mechanisms
+   - Serves as the primary threat detection tool in the project
+
+**Tines**
+   - Security orchestration, automation, and response (SOAR) platform
+   - Allows creation of complex workflow automation
+   - Enables integration between different security tools
+   - Used to design and implement automated incident response workflows
+
+**Slack**
+   - Communication platform for notifications and alerts
+   - Integrated into the incident response workflow
+   - Provides real-time messaging and collaboration capabilities
+   - Used to send automated notifications about detected events
+
+**LaZagne**
+   - Open-source password recovery tool
+   - Used as a simulated malware/testing tool
+   - Helps demonstrate detection capabilities
+   - Provides a realistic scenario for testing the security workflow
+
 ## Preparatory Setup
 ### Prerequisites
 ### System Verification
@@ -365,7 +419,50 @@ In the Respond Descriptor, enter the following configuration:
   
      ![Table 2](./screenshots/screenshot34.png)
 
+### Incident Message Details Template
 
+To extract the required information from the webhook event, follow these steps:
+
+**Method 1: Manual Copying**
+
+1. Click on the webhook and then click on events. If you don't have an event yet, head back to your virtual machine and execute LaZagne in your terminal (assuming you have connected Tines with LimaCharlie).
+2. Once you have an event, select it and expand the "retrieve_detection" section in the center of the page.
+3. Expand "body", then "detect", and then both "event" and "routing".
+4. Copy the following fields:
+	* "cat" and "link" from the main section
+	* "COMMAND_LINE", "USER_NAME", and "FILE_PATH" from the "event" section
+	* "hostname", "event_time", "int_ip", and "sid" from the "routing" section
+
+**Method 2: Using Tines' Slack Integration**
+
+1. Click on Slack in your Story and go to the Build tab.
+2. Click on the Message field to activate it, and then click the plus button that appears.
+3. Select "Value" from the options.
+4. In the Data section, click on "retrieve_detections" and then "body".
+5. Click on "body" again to see the available fields.
+6. Select the required fields, such as "cat" (title), without clicking on it again to avoid adding a dot.
+
+**Formatting the Data**
+
+Once you have copied the required fields, paste them into a notepad and format the data to make it more user-friendly. You can add labels such as "Title:", "Time:", "Computer:", etc.
+
+For the email, use HTML to create line breaks by wrapping each field in a `<br>` tag.
+
+**Example Output**
+
+Here's an example of how you can format the data:
+
+Tittle: <<retrieve_detections.body.cat>>
+Time: <<retrieve_detections.body.detect.routing.event_time>>
+Computer: <<retrieve_detections.body.detect.routing.hostname>>
+Source IP: <<retrieve_detections.body.detect.routing.int_ip>>
+Username: <<retrieve_detections.body.detect.event.USER_NAME>>
+FIle Path: <<retrieve_detections.body.detect.event.FILE_PATH>>
+Command Line: <<retrieve_detections.body.detect.event.COMMAND_LINE>>
+Sensor ID: <<retrieve_detections.body.detect.routing.sid>>
+Detection Link: <<retrieve_detections.body.link>>
+
+You can paste this formatted data into the contents section under the title in your User Prompt page.
 
 ###note Click in the background of the canvas story to return to the main view. This will allow you to see the left side panel, which includes details such as Status, Story name, Description, Story owner, Tags, and Credentials, and then under Credentials section
 
@@ -414,26 +511,6 @@ In the Respond Descriptor, enter the following configuration:
 8. Change the name "Boolean" to "Do you want to isolate the machine?"
 
    ![Table 2](./screenshots/screenshot43.png)
-
-
-
-### include the details into our messages
-so click to the webhook and then click to events, if you dont have an event yet, head back to your virtual machine and execute again LaZagne in your terminal (assuming you have connected Tines with limaCHarlie), then we go back to the webhook, then event, we select an event, then in the center there will be the info, then we expand the "retrieve_detection", then expand "body", then expand detect, then expand "event" and "routing". copy "cat", "link", in "event" copy "COMMAND_LINE". "USER_NAME" and "FILE_PATH", and then in "routing" copy 
-"hostname", "event_time", "int_ip", "sid". we could do this differently, we could click to Slack in our Story in Tines, then on the right side on the Build tab, on the Message field we click the plus button, then value, here we are interested in Data section, (the reson we see the Data section is because there is a link between webhook and Slack), so lets clikc on retrieve_detections on the Data section, click again and it will add a dot and then in Data section it will show "body", "headers", "response". we want to select body, so we clikc on body, then click again, then you can see all the data of the body, then we can click on the cat (but dont click cat again, it will add a dot and cause an error), this will show our title. to save just click out of this window. but we will paste in all of our information that we copied into our notepad. we will make it little more user friendly by adding some infor, Tittle:, Time:, Computer:, Source IP:, Username:, FIle Path:, Command Line:, Sensor ID:, Detection Link:. do the same thing for the email, but the only difference is we will but each of then inside a <br> to create line break bcs it is an html for email. we do the same we paste that into our contents section under title in our User Prompt page.
-
-
-Tittle: <<retrieve_detections.body.cat>> 
-Time: <<retrieve_detections.body.detect.routing.event_time>> 
-Computer: <<retrieve_detections.body.detect.routing.hostname>> 
-Source IP: <<retrieve_detections.body.detect.routing.int_ip>> 
-Username: <<retrieve_detections.body.detect.event.USER_NAME>>
-FIle Path: <<retrieve_detections.body.detect.event.FILE_PATH>> 
-Command Line: <<retrieve_detections.body.detect.event.COMMAND_LINE>> 
-Sensor ID: <<retrieve_detections.body.detect.routing.sid>> 
-Detection Link: <<retrieve_detections.body.link>>
-
-
-
 
 ### Handling User Response (No)
 
