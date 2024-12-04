@@ -20,18 +20,18 @@
 5. Communication Platform Configuration
    - Creating a Slack Account and Setting Up a New Workspace
    - Tines Configuration
-   - Connecting to LimaCharlie
-   - Connecting to Slack
-   - Connecting to Email
-   - - Incident Message Details Template
+     - Connecting to LimaCharlie
+     - Connecting to Slack
+     - Connecting to Email
+   - Incident Message Details Template
 6. Incident Response Framework
-   - Incident Response Workflow
    - Isolate Computer Prompt
    - Handling User Responses (No)
    - Handling User Responses (Yes)
-   - Isolation Status and Messaging
+     - Isolation Status and Messaging
 
-
+## Preparatory Setup
+### Prerequisites
 ### System Verification
 Before installation, verify your system specifications:
 ```bash
@@ -44,15 +44,15 @@ curl -v https://limacharlie.io
 telnet limacharlie.io 443
 ```
 
-### Threat Simulation Tool
-#### LaZagne Password Recovery Tool
+## Threat Simulation Tool
+### LaZagne Password Recovery Tool
 
-##### Overview
+#### Overview
 LaZagne is a tool for recovering locally stored passwords.
 
 **IMPORTANT**: Only use this tool ethically and legally with proper authorization.
 
-##### Installation Steps
+#### Installation Steps
 1. Install Prerequisites: Update package list and install requirements
 ```bash
 sudo apt update
@@ -83,17 +83,17 @@ python3 laZagne.py all
 
 
 
-### LimaCharlie Configuration
+## LimaCharlie Configuration
 
 **Overview**
 LimaCharlie is a cloud-native Endpoint Detection and Response (EDR) platform that provides real-time threat detection, incident response, and security monitoring capabilities. Designed for scalability and ease of use, LimaCharlie helps organizations of all sizes to detect and respond to advanced threats, while also providing a robust framework for security teams to investigate and remediate incidents.
 
-#### Account Setup
+### Account Setup
 To set up your Lima Charlie account, follow these steps:
 1. Go to the Lima Charlie website and sign up for an account.
 2. Fill out the registration form with your email address, password, and other required information.
 
-#### Installation Key Creation and Session Download
+### Installation Key Creation and Session Download
 To create an installation key and download the Lima Charlie session, follow these steps:
 
 1. Navigate to the "Sensors" tab in the sidebar navigation.
@@ -228,7 +228,7 @@ In the Respond Descriptor, enter the following configuration:
     - attack.credential_access
   name: IN - HackTool - LaZAgne (SOAR-EDR)
 ```
-
+## Communication Platform Configuration
 ### Creating a Slack Account and Setting Up a New Workspace
 
 1. Go to the Slack website and sign up for an account.
@@ -241,7 +241,7 @@ In the Respond Descriptor, enter the following configuration:
 
 
 
-### Tines
+### Tines Configuration
 
 1. Go to the Tines website and sign up for an account.
 
@@ -292,7 +292,7 @@ In the Respond Descriptor, enter the following configuration:
 
 ![Table 2](./screenshots/screenshot18.png)
 
-### Connecting Tines to Slack
+#### Connecting Tines to Slack
 
 1. Scroll down on the left side navigation bar and click on Templates.
 
@@ -334,7 +334,7 @@ In the Respond Descriptor, enter the following configuration:
 
 
 
-### Connecting Tines with Email
+#### Connecting Tines with Email
 
 1. On the left side navigation bar, drag the "Send Email" to the center of the story's canvas.
 
@@ -369,6 +369,7 @@ In the Respond Descriptor, enter the following configuration:
 
 ###note Click in the background of the canvas story to return to the main view. This will allow you to see the left side panel, which includes details such as Status, Story name, Description, Story owner, Tags, and Credentials, and then under Credentials section
 
+## Isolate Computer Workflow
 
 ### Isolate Computer Prompt
 
@@ -621,7 +622,7 @@ Detection Link: <<retrieve_detections.body.link>>
       ![Table 2](./screenshots/screenshot84.png)
 
 
-### isolation status and message
+#### Isolation Status and Message
 
 1. On the left side, click on "Templates".
 
