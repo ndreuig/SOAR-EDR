@@ -5,7 +5,8 @@
    - Presenting EDR
    - Presenting SOAR
    - Project Overview
-   - Workflow
+   - Workflow overview
+     - Diagram: Workflow Representation 
    - Environment
 2. Preparatory Setup
    - Prerequisites
@@ -41,8 +42,40 @@ EDR (Endpoint Detection and Response) is a cybersecurity technology that detects
 SOAR (Security Orchestration, Automation, and Response) is a cybersecurity technology that automates and streamlines security incident response processes. It integrates with various security tools to provide a centralized platform for threat detection, incident response, and remediation, helping to improve efficiency and reduce response times.
 
 ### Project Overview
-…..
-### Workflow
+Cybersecurity threats are a big problem. They're getting more sophisticated and happening too quickly for manual processes to handle. This project brings together two important tools - SOAR and EDR - to help us respond to incidents more effectively. By automating some tasks and getting a better view of what's happening on our endpoints, we can make better decisions and keep our systems and data safer.
+
+### Workflow Overview
+
+The SOAR-EDR playbook integrates tools like LimaCharlie, Tines, Slack, and Email to coordinate detection, notification, and response. The process begins with threat detection and follows a structured sequence:
+
+**1. Detection:**
+    - A potential threat, such as a hack tool, is detected by LimaCharlie’s endpoint detection capabilities.
+    - Upon detection, an alert is generated and forwarded to Tines for further action.
+
+
+**2. Notification:**
+    - **Tines** acts as the automation orchestrator, triggering notifications.
+    - Alerts are sent to relevant stakeholders through communication channels, including:
+      - **Slack:** For instant team communication.
+      - **Email:** Used to share detailed alert information with a wider group of people.
+
+**3. Decision Making:**
+    - A user prompt is issued, asking stakeholders whether the affected machine should be isolated.
+    - The decision is critical and leads to two possible paths:
+    **Path 1: YES (Isolate Machine):**
+	- LimaCharlie isolates the compromised machine to prevent lateral movement of the threat.
+ 	- A confirmation message, “The computer [] has been isolated,” is sent to Slack.
+    **Path 2: NO (Do Not Isolate):**
+    	- A message is sent to Slack advising further investigation, stating, “The computer [] was not isolated, please investigate.”
+
+#### Diagram: Workflow Representation
+
+![Table 2](./screenshots/edr3.png)
+
+The SOAR-EDR playbook workflow, illustrating the detection and isolation process for a compromised machine.
+
+The attached diagram provides a visual representation of the workflow described above. It demonstrates the sequential flow from detection to decision-making, emphasizing the role of automation and user interaction in enhancing the incident response process.
+
 
 ### Project Environment
 
@@ -86,6 +119,29 @@ A hands-on cybersecurity automation project utilizing Kali Linux as the primary 
 
 ## Preparatory Setup
 ### Prerequisites
+
+**1. System Requirements**
+**Operating System:** Kali Linux
+**Virtualization:** VirtualBox
+**Internet Connection:** Active internet connection
+
+**2. Minimum Verification Steps**
+```bash
+#Verify internet connectivity
+ping -c 4 google.com
+
+#Check Python installation
+python3 --version
+```
+**3. Ensure required packages can be installed**
+```bash
+sudo apt update
+```
+**4. Required Software Packages**
+```bash
+sudo apt install -y git python3 python3-pip curl
+```
+
 ### System Verification
 Before installation, verify your system specifications:
 ```bash
@@ -236,7 +292,7 @@ rules:
         value: "bbe76b860d1abdb0e1146cb2be037ba63cbf430d87af42e89de33bd46222764b"
 ```
 **In plain english** 
-The even must be a (NEW_PROCESS AND must be a linux) AND file_path ends with python3.12 OR command_line ends with all OR command_line contains lazagne
+The event must be a (NEW_PROCESS AND must be a linux) AND file_path ends with python3.12 OR command_line ends with all OR command_line contains lazagne
 OR hash == Lazagne hash.
 
 **Configuration Explanation**
@@ -415,7 +471,7 @@ In the Respond Descriptor, enter the following configuration:
   
      ![Table 2](./screenshots/screenshot33.png)
 
-   - Subject: Test (for now)
+   - Subject: Test
   
      ![Table 2](./screenshots/screenshot34.png)
 
@@ -450,8 +506,9 @@ For the email, use HTML to create line breaks by wrapping each field in a `<br>`
 
 **Example Output**
 
-Here's an example of how you can format the data:
+Paste the following message in the Slack message field:
 
+```bash
 Tittle: <<retrieve_detections.body.cat>>
 Time: <<retrieve_detections.body.detect.routing.event_time>>
 Computer: <<retrieve_detections.body.detect.routing.hostname>>
@@ -461,10 +518,25 @@ FIle Path: <<retrieve_detections.body.detect.event.FILE_PATH>>
 Command Line: <<retrieve_detections.body.detect.event.COMMAND_LINE>>
 Sensor ID: <<retrieve_detections.body.detect.routing.sid>>
 Detection Link: <<retrieve_detections.body.link>>
+```
 
-You can paste this formatted data into the contents section under the title in your User Prompt page.
+And paste the following message in the Email body field:
 
-###note Click in the background of the canvas story to return to the main view. This will allow you to see the left side panel, which includes details such as Status, Story name, Description, Story owner, Tags, and Credentials, and then under Credentials section
+```bash
+<b>Title:</b> <<retrieve_detections.body.cat>><br>
+<b>Time:</b> <<retrieve_detections.body.detect.routing.event_time>><br>
+<b>Computer:</b> <<retrieve_detections.body.detect.routing.hostname>><br>
+<b>Source IP:</b> <<retrieve_detections.body.detect.routing.int_ip>><br>
+<b>Username:</b> <<retrieve_detections.body.detect.event.USER_NAME>><br>
+<b>File Path:</b> <<retrieve_detections.body.detect.event.FILE_PATH>><br>
+<b>Command Line:</b> <<retrieve_detections.body.detect.event.COMMAND_LINE>><br>
+<b>Sensor ID:</b> <<retrieve_detections.body.detect.routing.sid>><br>
+<b>Detection Link:</b> <<retrieve_detections.body.link>><br>
+```
+
+![Table 2](./screenshots/screenshot90.png)
+
+
 
 ## Isolate Computer Workflow
 
@@ -500,7 +572,19 @@ You can paste this formatted data into the contents section under the title in y
 
    ![Table 2](./screenshots/screenshot41.png)
 
-6. Below the heading, edit the text and enter the detail message(we will add it later)
+6. Below the heading, edit the text and enter the detail message
+
+```bash
+Tittle: <<retrieve_detections.body.cat>>
+Time: <<retrieve_detections.body.detect.routing.event_time>>
+Computer: <<retrieve_detections.body.detect.routing.hostname>>
+Source IP: <<retrieve_detections.body.detect.routing.int_ip>>
+Username: <<retrieve_detections.body.detect.event.USER_NAME>>
+FIle Path: <<retrieve_detections.body.detect.event.FILE_PATH>>
+Command Line: <<retrieve_detections.body.detect.event.COMMAND_LINE>>
+Sensor ID: <<retrieve_detections.body.detect.routing.sid>>
+Detection Link: <<retrieve_detections.body.link>>
+```
 
    ![Table 2](./screenshots/screenshot42.png)
 
