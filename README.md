@@ -832,3 +832,16 @@ Detection Link: <<retrieve_detections.body.link>>
 Isolation Status: <<get_isolation_status.body.is_isolated>>
 The computer: <<retrieve_detections.body.detect.routing.hostname has been isolated>>
 ```
+
+## Tines SOAR Workflow
+
+Below is the diagram showcasing the Tines workflow for handling detections:
+
+![Tines SOAR Workflow](./screenshots/IN-SOAR-EDR-storyboard.png)
+
+### Workflow Explanation
+
+The workflow starts by retrieving detections via a webhook. Users are prompted to decide whether to isolate the sensor. Based on their input:
+
+- **Yes:** Sends an HTTP request to isolate the sensor and retrieves its isolation status before notifying the team on Slack.
+- **No:** Simply notifies the team on Slack.
