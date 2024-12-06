@@ -410,7 +410,7 @@ In the Respond Descriptor, enter the following configuration:
  
 3. Drag the Slack template to the center of the canvas story.
 
-
+![Table 2](./screenshots/slack.gif)
    
 5. Click on the Slack, navigate to the Build tab and search for "send a message".
 
@@ -448,7 +448,7 @@ In the Respond Descriptor, enter the following configuration:
 
 1. On the left side navigation bar, drag the "Send Email" to the center of the story's canvas.
 
-
+![Table 2](./screenshots/email.gif)
 
 3. Click on the "Send Email" action.
 
@@ -543,6 +543,9 @@ And paste the following message in the Email body field:
 ### Isolate Computer Prompt
 
 1. Place your mouse on Tools, and then drag the "Page" option to the center of the story canvas.
+
+![Table 2](./screenshots/page.gif)
+
 2. On the right side, in the Build tab, set the following: 
    - Name: User prompt
   
@@ -568,11 +571,11 @@ And paste the following message in the Email body field:
 
    ![Table 2](./screenshots/screenshot40.png)
    
-5. Click on the heading content where it says "My new page", enter: IN-SOAR-EDR-Project
+4. Click on the heading content where it says "My new page", enter: IN-SOAR-EDR-Project
 
    ![Table 2](./screenshots/screenshot41.png)
 
-6. Below the heading, edit the text and enter the detail message
+5. Below the heading, edit the text and enter the detail message
 
 ```bash
 Tittle: <<retrieve_detections.body.cat>>
@@ -590,7 +593,7 @@ Detection Link: <<retrieve_detections.body.link>>
 
 7. On the left side navigation, on the Elements tab, look  for the "Input fields" section and then drag the "Boolean" to the box.
 
-   
+![Table 2](./screenshots/boolean.gif)
 
 8. Change the name "Boolean" to "Do you want to isolate the machine?"
 
@@ -599,6 +602,9 @@ Detection Link: <<retrieve_detections.body.link>>
 ### Handling User Response (No)
 
 1. On the left side, drag the trigger in the middle of the canvas story below the User Prompt.
+
+![Table 2](./screenshots/trigger.gif)
+
 2. On the right side, in the Build tab, set the following:
    - Name: No
   
@@ -704,7 +710,7 @@ Detection Link: <<retrieve_detections.body.link>>
 
 5. Drag it to the center of the canvas below the "Yes" trigger.
 
-   
+![Table 2](./screenshots/limacharlie.gif)
 
 6. Click on the LimaCharlie template, and in the Build tab, search for "isolate sensor" in the search box.
 
@@ -796,7 +802,7 @@ Detection Link: <<retrieve_detections.body.link>>
    
 5. Drag the LimaCharlie template to the center of the canvas story below the "Isolate Sensor" action.
 
-
+![Table 2](./screenshots/limacharlie.gif)
 
 6. Click on the LimaCharlie template, and in the right side on the Build tab, search for "get isolation status" in the search box.
 
